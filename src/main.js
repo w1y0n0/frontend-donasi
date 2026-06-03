@@ -17,6 +17,11 @@ import './style.css'
  */
 import mixins from './mixins';
 
+/**
+ * Vue Router
+ */
+import router from './router';
+
 // create App Vue
 const app = createApp(App)
 
@@ -25,5 +30,8 @@ app.use(Toast)
 
 // gunakan "Mixins" di Vue Js dengan plugin "use"
 app.mixin(mixins)
+
+//gunakan "router" di Vue Js dengan plugin "use"
+app.use(router)
 
 app.mount('#app')
