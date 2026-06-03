@@ -1,5 +1,16 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+/**
+ * import Toastr
+ */
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+
+// create App Vue
+const app = createApp(App)
+
+// gunakan "Toast" di Vue Js dengan plugin "use"
+app.use(Toast)
+
+app.mount('#app')
