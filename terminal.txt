@@ -1,0 +1,25 @@
+===
+Membuat Project Vue Js dengan Vite
+===
+1. Membuat Project Vue Js dengan Vite
+    > npm create vite@4.2.0 frontend-donasi -- --template vue
+    Need to install the following packages:
+    create-vite@4.2.0
+    Ok to proceed? (y) y
+
+
+    > npx
+    > cva frontend-donasi --template vue
+
+
+    Scaffolding project in C:\laragon\www\santrikoding-donasi-online\frontend-donasi...
+
+    Done. Now run:
+
+    cd frontend-donasi
+    npm install
+    npm run dev
+
+    > cd frontend-donasi
+    > npm install
+    > npm run dev
