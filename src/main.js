@@ -22,6 +22,11 @@ import mixins from './mixins';
  */
 import router from './router';
 
+/**
+ * Vuex  
+ */
+import store from './store'
+
 // create App Vue
 const app = createApp(App)
 
@@ -33,5 +38,8 @@ app.mixin(mixins)
 
 //gunakan "router" di Vue Js dengan plugin "use"
 app.use(router)
+
+//gunakan "store" di Vue Js dengan plugin "use"
+app.use(store)
 
 app.mount('#app')
