@@ -134,6 +134,56 @@ const auth = {
             })
         },
 
+        //action login
+        login({ commit }, user) {
+
+            //define callback promise
+            return new Promise((resolve, reject) => {
+
+                Api.post('/login', {
+
+                    //data yang dikirim ke server
+                    email: user.email,
+                    password: user.password,
+
+                })
+
+                    .then(response => {
+
+                        //define variable dengan isi hasil response dari server
+                        const token = response.data.token
+                        const user = response.data.data
+
+                        //set localStorage untuk menyimpan token dan data user
+                        localStorage.setItem('token', token)
+                        localStorage.setItem('user', JSON.stringify(user))
+
+                        //set default header axios dengan token
+                        Api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+                        //commit auth success ke mutation
+                        commit('AUTH_SUCCESS', token, user)
+
+                        //commit get user ke mutation
+                        commit('GET_USER', user)
+
+                        //resolve ke component dengan hasil response
+                        resolve(response)
+
+                    }).catch(error => {
+
+                        //jika gagal, remove localStorage dengan key token
+                        localStorage.removeItem('token')
+
+                        //reject ke component dengan hasil response
+                        reject(error.response.data)
+
+                    })
+
+            })
+
+        }
+
     },
 
     //getters
