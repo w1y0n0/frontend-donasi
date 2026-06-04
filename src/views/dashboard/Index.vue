@@ -44,7 +44,7 @@
                     </div>
                 </a>
 
-                <a href="#">
+                <a @click="logout" style="cursor: pointer">
                     <div class="grid grid-cols-5 gap-4 bg-gray-300 p-3 rounded-md shadow-sm mb-3">
                         <div class="col-span-5">
                             <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Logout
@@ -63,8 +63,14 @@
 //hook vuex
 import { useStore } from 'vuex'
 
+//hook vue router
+import { useRouter } from 'vue-router'
+
 //hook vue
 import { computed, onMounted } from 'vue'
+
+//hook Toast
+import { useToast } from "vue-toastification"
 
 export default {
 
@@ -74,6 +80,12 @@ export default {
 
         //store vuex
         const store = useStore()
+
+        //vue router
+        const router = useRouter()
+
+        // Same interface as this.$toast
+        const toast = useToast()
 
         //mounted
         onMounted(() => {
@@ -87,8 +99,27 @@ export default {
             return store.state.auth.user
         })
 
+        //method logout
+        function logout() {
+
+            //panggil action "logout" di dalam module "auth"
+            store.dispatch('auth/logout')
+                .then(() => {
+
+                    //jika berhasil, akan di arahkan ke route login
+                    router.push({
+                        name: 'login'
+                    })
+
+                    toast.success("Logout Berhasil!")
+
+                })
+
+        }
+
         //return a state and function
         return {
+            logout,     // <-- method logout
             user,       // <-- state user
         }
 

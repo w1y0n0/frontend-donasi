@@ -31,6 +31,12 @@ const auth = {
             state.user = user // <-- assign state user dengan response data user
         },
 
+        //fungsi logout
+        AUTH_LOGOUT(state) {
+            state.token = '' // <-- set state token ke empty
+            state.user = {} // <-- set state user ke empty array
+        },
+
     },
 
     //actions
@@ -96,10 +102,34 @@ const auth = {
 
             Api.defaults.headers.common['Authorization'] = `Bearer ${token}`
             Api.get('/user')
-            .then(response => {
-                
-                //commit ke mutatuin GET_USER dengan hasil response
-                commit('GET_USER', response.data)
+                .then(response => {
+
+                    //commit ke mutatuin GET_USER dengan hasil response
+                    commit('GET_USER', response.data)
+
+                })
+        },
+
+        //action logout
+        logout({ commit }) {
+
+            //define callback promise
+            return new Promise((resolve) => {
+
+                //commit ke mutation AUTH_LOGOUT
+                commit('AUTH_LOGOUT')
+
+                //remove value dari localStorage
+                localStorage.removeItem('token')
+                localStorage.removeItem('user')
+
+                //di atas kita set data-nya menjadi 0
+
+                //delete header axios
+                delete Api.defaults.headers.common['Authorization']
+
+                //return resolve ke component 
+                resolve()
 
             })
         },
@@ -118,7 +148,7 @@ const auth = {
         isLoggedIn(state) {
             return state.token // return dengan data token
         },
-        
+
     }
 
 }
