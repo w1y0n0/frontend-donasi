@@ -81,6 +81,39 @@ const profile = {
 
         },
 
+        //action updatePassword
+        updatePassword({ commit }, user) {
+
+            return new Promise((resolve, reject) => {
+
+                //get data token dan user
+                const token = localStorage.getItem('token')
+
+                //set axios header dengan type Authorization + Bearer token
+                Api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+                //get data profile ke server
+                Api.post('/profile/password', {
+                    password: user.password,
+                    password_confirmation: user.password_confirmation
+                })
+                    .then(response => {
+
+                        //commit ke mutation SET_PROFILE dengan response data
+                        commit('SET_PROFILE', response.data.data)
+
+                        resolve(response)
+
+                    }).catch(error => {
+
+                        //reject ke component dengan hasil response
+                        reject(error.response.data)
+
+                    })
+            })
+
+        }
+
     },
 
     //getters
