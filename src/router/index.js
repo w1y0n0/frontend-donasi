@@ -43,6 +43,15 @@ const routes = [
             requiresAuth: true
         }
     },
+    {
+        path: '/profile/password',
+        name: 'profile.password',
+        component: () => import( /* webpackChunkName: "profilePassword" */ '../views/profile/Password.vue'),
+        meta: {
+            //chek is loggedIn
+            requiresAuth: true
+        }
+    },
 ]
 
 //create router
