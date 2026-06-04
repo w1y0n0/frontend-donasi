@@ -10,6 +10,9 @@ import donation from './module/donation'
 //import module profile
 import profile from './module/profile'
 
+//import module slider
+import slider from './module/slider'
+
 //create store vuex
 export default createStore({
 
@@ -17,6 +20,7 @@ export default createStore({
         auth,       // <-- module auth
         donation,   // <-- module donation
         profile,    // <-- module profile
+        slider,     // <-- module slider
     }
 
 })
