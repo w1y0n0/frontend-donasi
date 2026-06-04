@@ -25,6 +25,15 @@ const routes = [
             requiresAuth: true
         }
     },
+    {
+        path: '/donation',
+        name: 'donation.index',
+        component: () => import( /* webpackChunkName: "donationIndex" */ '../views/donation/Index.vue'),
+        meta: {
+            //chek is loggedIn
+            requiresAuth: true
+        }
+    },
 ]
 
 //create router
@@ -38,12 +47,12 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         //cek nilai dari getters isLoggedIn di module auth
         if (store.getters['auth/isLoggedIn']) {
-        next()
-        return
-      }
-      next('/login')
+            next()
+            return
+        }
+        next('/login')
     } else {
-      next()
+        next()
     }
 })
 

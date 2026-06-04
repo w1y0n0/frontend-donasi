@@ -20,13 +20,13 @@
                 </div>
                 <div class="border-2 border-gray-200 mt-3 mb-2"></div>
 
-                <a href="#">
+                <router-link :to="{name: 'donation.index'}">
                     <div class="grid grid-cols-5 gap-4 bg-gray-300 p-3 rounded-md shadow-sm mb-3">
                         <div class="col-span-5">
                             <i class="fa fa-heart" aria-hidden="true"></i> Donasi Saya
                         </div>
                     </div>
-                </a>
+                </router-link>
 
                 <a href="#">
                     <div class="grid grid-cols-5 gap-4 bg-gray-300 p-3 rounded-md shadow-sm mb-3">
