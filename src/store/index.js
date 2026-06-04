@@ -13,6 +13,9 @@ import profile from './module/profile'
 //import module slider
 import slider from './module/slider'
 
+//import module category
+import category from './module/category'
+
 //create store vuex
 export default createStore({
 
@@ -21,6 +24,7 @@ export default createStore({
         donation,   // <-- module donation
         profile,    // <-- module profile
         slider,     // <-- module slider
+        category,   // <-- module category
     }
 
 })
