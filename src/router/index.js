@@ -57,6 +57,16 @@ const routes = [
         name: 'home',
         component: () => import( /* webpackChunkName: "home" */ '../views/home/Index.vue')
     },
+    {
+        path: '/category',
+        name: 'category.index',
+        component: () => import( /* webpackChunkName: "categoryIndex" */ '../views/category/Index.vue')
+    },
+    {
+        path: '/category/:slug',
+        name: 'category.show',
+        component: () => import( /* webpackChunkName: "categoryShow" */ '../views/category/Show.vue')
+    },
 ]
 
 //create router

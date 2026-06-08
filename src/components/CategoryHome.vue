@@ -4,21 +4,21 @@
             <div class="mt-5 grid grid-cols-4  gap-4 md:gap-4 text-center items-center">
                 <div v-for="category in categories" :key="category.id"
                     class="col-span-2 md:col-span-2 lg:col-span-1 bg-white rounded-md shadow-md p-4 text-center text-xs">
-                    <a href="#">
+                    <router-link :to="{ name: 'category.show', params: { slug: category.slug } }">
                         <div>
                             <img :src="category.image" width="40" class="inline-block mb-2">
                         </div>
                         {{ category.name.toUpperCase() }}
-                    </a>
+                    </router-link>
                 </div>
                 <div
                     class="col-span-2 md:col-span-1 lg:col-span-1 bg-white rounded-md shadow-md p-4 text-center text-xs">
-                    <a href="#">
+                    <router-link :to="{ name: 'category.index' }">
                         <div>
                             <img src="../assets/images/menu.png" width="40" class="inline-block mb-2">
                         </div>
                         LAINNYA
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>
