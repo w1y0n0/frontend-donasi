@@ -16,6 +16,18 @@ const campaign = {
         nextExists: false,
         nextPage: 0,
 
+        //detail campaign
+        campaign: {},
+
+        //detail user
+        user: {},
+
+        //total donation
+        sumDonation: [],
+
+        //data donations
+        donations: []
+
     },
 
     //mutations
@@ -41,6 +53,26 @@ const campaign = {
             data.forEach(row => {
                 state.campaigns.push(row);
             });
+        },
+
+        //set state campaign dengan data dari response
+        DETAIL_CAMPAIGN(state, data) {
+            state.campaign = data
+        },
+
+        //set state donatur dengan data dari response
+        DETAIL_USER(state, data) {
+            state.user = data
+        },
+
+        //set state sumDonation dengan data dari response
+        DETAIL_SUMDONATION(state, data) {
+            state.sumDonation = data
+        },
+
+        //set state donations dengan data dari response
+        SET_DONATIONS(state, data) {
+            state.donations = data
         },
 
     },
@@ -105,6 +137,33 @@ const campaign = {
                         //commit ke mutation SET_NEXTEXISTS dengan false
                         commit('SET_NEXTEXISTS', false)
                     }
+
+                }).catch(error => {
+
+                    //show error log dari response
+                    console.log(error)
+
+                })
+        },
+
+        //action getDetailCampaign
+        getDetailCampaign({ commit }, slug) {
+
+            //get data detail campaign ke server
+            Api.get(`/campaign/${slug}`)
+                .then(response => {
+
+                    //commit ke mutation DETAIL_CAMPAIGN dengan response data
+                    commit('DETAIL_CAMPAIGN', response.data.data)
+
+                    //commit ke mutation DETAIL_USER dengan response data
+                    commit('DETAIL_USER', response.data.data.user)
+
+                    //commit ke mutation DETAIL_SUMDONATION dengan response data
+                    commit('DETAIL_SUMDONATION', response.data.data.sum_donation)
+
+                    //commit ke mutation SET_DONATIONS dengan response data
+                    commit('SET_DONATIONS', response.data.donations)
 
                 }).catch(error => {
 
