@@ -10,7 +10,7 @@
                         </router-link>
                     </div>
                     <div class="col-span-8">
-                        <input type="text"
+                        <input type="text" @click="linkToSearch"
                             class="appearance-none w-full bg-gray-500 rounded-full h-7 shadow-md placeholder-white focus:outline-none focus:placeholder-gray-600 focus:bg-white focus-within:text-gray-600 p-5"
                             placeholder="Cari yang ingin kamu bantu">
                     </div>
@@ -21,8 +21,31 @@
 </template>
 
 <script>
+
+//hook vue router
+import { useRouter } from 'vue-router'
+
 export default {
-    name: 'HeaderComponent'
+
+    name: 'HeaderComponent',
+
+    setup() {
+
+        //router
+        const router = useRouter()
+
+        //redirect to route search
+        function linkToSearch() {
+            router.push({
+                name: 'search'
+            })
+        }
+
+        return {
+            linkToSearch,   // <-- method linkToSearch
+        }
+    }
+
 }
 </script>
 

@@ -86,6 +86,11 @@ const routes = [
             requiresAuth: true
         }
     },
+    {
+        path: '/search',
+        name: 'search',
+        component: () => import( /* webpackChunkName: "search" */ '../views/search/Index.vue')
+    },
 ]
 
 //create router
