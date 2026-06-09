@@ -10,7 +10,7 @@
                         </router-link>
                     </div>
                     <div class="col-span-8">
-                        <input type="text" @click="linkToSearch"
+                        <input type="text" @click="linkToSearch" v-model="search" @keyup="searchQuery"
                             class="appearance-none w-full bg-gray-500 rounded-full h-7 shadow-md placeholder-white focus:outline-none focus:placeholder-gray-600 focus:bg-white focus-within:text-gray-600 p-5"
                             placeholder="Cari yang ingin kamu bantu">
                     </div>
@@ -22,8 +22,14 @@
 
 <script>
 
+//hook vue
+import { ref } from 'vue'
+
 //hook vue router
 import { useRouter } from 'vue-router'
+
+//hook vuex
+import { useStore } from 'vuex'
 
 export default {
 
@@ -34,6 +40,17 @@ export default {
         //router
         const router = useRouter()
 
+        //store
+        const store = useStore()
+
+        //state seacrh
+        const search = ref(null)
+
+        //queryString
+        function searchQuery() {
+            store.dispatch('campaign/searchCampaign', search.value)
+        }
+
         //redirect to route search
         function linkToSearch() {
             router.push({
@@ -42,7 +59,9 @@ export default {
         }
 
         return {
+            search,         // <-- state search
             linkToSearch,   // <-- method linkToSearch
+            searchQuery     // <-- method searchQuery
         }
     }
 
