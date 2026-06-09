@@ -18,11 +18,11 @@
                                 <img class="w-full h-34 md:w-56 rounded object-cover" :src="campaign.image" width="384"
                                     height="512">
                                 <div class="w-full pt-6 p-5 md:p-3 text-center md:text-left space-y-4">
-                                    <a href="#">
+                                    <router-link :to="{ name: 'campaign.show', params: { slug: campaign.slug } }">
                                         <p class="text-sm font-semibold">
                                             {{ campaign.title }}
                                         </p>
-                                    </a>
+                                    </router-link>
                                     <div class="font-medium">
                                         <div class="mt-3 text-gray-500 text-xs">
                                             {{ campaign.user.name }}
@@ -43,7 +43,7 @@
                                                     <span class="font-bold text-blue-400">Rp. {{
                                                         formatPrice(donation.total) }} </span> terkumpul dari
                                                     <span class="font-bold">Rp. {{ formatPrice(campaign.target_donation)
-                                                        }}</span>
+                                                    }}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -60,7 +60,7 @@
                                             <p class="text-xs text-gray-500">
                                                 <span class="font-bold text-blue-400">Rp. 0 </span> terkumpul dari
                                                 <span class="font-bold">Rp. {{ formatPrice(campaign.target_donation)
-                                                    }}</span>
+                                                }}</span>
                                             </p>
                                         </div>
                                         <div class="mt-3 text-xs">

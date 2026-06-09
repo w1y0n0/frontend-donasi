@@ -67,6 +67,16 @@ const routes = [
         name: 'category.show',
         component: () => import( /* webpackChunkName: "categoryShow" */ '../views/category/Show.vue')
     },
+    {
+        path: '/campaign',
+        name: 'campaign.index',
+        component: () => import( /* webpackChunkName: "campaignIndex" */ '../views/campaign/Index.vue')
+    },
+    {
+        path: '/campaign/:slug',
+        name: 'campaign.show',
+        component: () => import( /* webpackChunkName: "campaignShow" */ '../views/campaign/Show.vue')
+    },
 ]
 
 //create router

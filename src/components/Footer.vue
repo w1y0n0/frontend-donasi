@@ -21,11 +21,11 @@
                 </div>
 
                 <div>
-                    <a href="#"
+                    <router-link :to="{ name: 'campaign.index' }"
                         class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center">
                         <img width="25" height="25" class="inline-block mb-1" src="../assets/images/flag.png">
                         <span class="tab tab-kategori block text-xs">Campaign</span>
-                    </a>
+                    </router-link>
                 </div>
 
                 <div>
