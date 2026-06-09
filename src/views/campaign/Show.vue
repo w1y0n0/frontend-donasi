@@ -61,11 +61,11 @@
                 </div>
                 <div v-else>
                     <div class="mt-5">
-                        <a href="#">
+                        <router-link :to="{ name: 'donation.create', params: { slug: route.params.slug } }">
                             <button
                                 class="bg-yellow-500 py-3 rounded-md shadow-md text-xl w-full uppercase font-bold focus:outline-none focus:bg-yellow-600">Donasi
-                                Sekarang!</button>
-                        </a>
+                                Sekarang! </button>
+                        </router-link>
                     </div>
                 </div>
 
@@ -204,6 +204,7 @@ export default {
             user,           // <-- user
             sumDonation,    // <-- sumDonation
             donations,      // <-- donations
+            route,          // <-- route
         }
     }
 
